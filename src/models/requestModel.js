@@ -20,7 +20,7 @@ const requestSchema = new mongoose.Schema({
         validate(value){
             if(!(value==='Direct' || value==='Retried' || value==='Failed'))
             {
-                throw Error("This is not valid password")
+                throw Error("This is not valid category")
             }
         }
     }

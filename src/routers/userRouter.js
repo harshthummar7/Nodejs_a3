@@ -44,7 +44,7 @@ router.post('/users',async (req,res)=>{
         const Rtoken = await generateToken(data)
         console.log('before',data.tokens)
         console.log(Rtoken)
-        data.tokens.push({token:Rtoken})
+        data.tokens.push(Rtoken)
         console.log('after',data.tokens)
         result.push(data)
         console.log({result})
@@ -97,7 +97,7 @@ router.post('/users/login',async (req,res) => {
                     const dup = response
                     const Rtoken = await generateToken(response)
                    // console.log(Rtoken)
-                    response.tokens.push({token:Rtoken})
+                    response.tokens.push(Rtoken)
                     
                     var i;
                      data.value.forEach((v,index) => {

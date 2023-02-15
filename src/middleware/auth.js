@@ -11,11 +11,12 @@ const auth = async (req,res,next)=>{
     try{
         
         const token = req.header('Authorization').replace('Bearer ','')
-        const decode = jwt.verify(token,JWT_SECRET)
+        const decodedToken = jwt.verify(token,"thisismynewcourse")
         const result =  await redisClient.get("client")
         const data = JSON.parse(result)
-        const response = data.value.find((d) => (d._id === decode._id && d.tokens[d.tokens.length-1].token === token))
-       // console.log(data.value.tokens)
+        const response = data.value.find((d) => (d._id === decodedToken._id && d.tokens[d.tokens.length-1].token === token))
+        //console.log(response)
+
         //const user = await User.findOne({_id:decode._id,'tokens.token':token})
 
         if(!response)
